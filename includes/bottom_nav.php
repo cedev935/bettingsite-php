@@ -1,5 +1,5 @@
-<footer class="my-footer ng-scope bg-light">
-	<div class="row">
+<footer class="my-footer ng-scope bg-light" >
+	<div class="row" style="background:#bdbaba;">
 		<div class="col-sm-4 text-center botBtn ng-binding" href="#/app/buy-chips">
 			<img class="spinImg" src="resources/chip2.png" alt="" height="25px" width="25px">
 			<br> 0 <small>Chips</small>

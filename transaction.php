@@ -1,6 +1,8 @@
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
-<body>
+<br>
+ <br>
+ <br>
 	 <div class="container" style="margin-top: 35px;">
         <div class="row" >
             <div class="col-md-12">
