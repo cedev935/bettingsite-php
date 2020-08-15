@@ -1,3 +1,5 @@
+<?php include('includes/server.php') ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +7,7 @@
     <script type="text/javascript">
         window.history.forward();
     </script>
-    <title>IIIT Ongole</title>
+    <title>Ludo Legion</title>
     <!--BootStrap assets hosted from CDN(Content Delivery Network for faster loading of pages) -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="resources/bootstrap.min.css">
@@ -15,14 +17,14 @@
 </head>
 
 <body class="text-center">
-    <form class="form-signin">
-        <img class="mb-4" src="resources/lb.png" alt="" width="72" height="72">
+    <form class="form-signin" method="post" action="login.php">
+        <img class="mb-4" src="resources/lb.png" alt="" width="100" height="100">
         <h1 class="h3 mb-3 font-weight-normal">Login here!</h1>
 
-        <input type="number" id="PhoneNo" class="form-control" placeholder="Mobile Number" required="">
-        <input type="password" id="password" class="form-control" placeholder="Password" required="">
+        <input type="number" name="phone_no" class="form-control" placeholder="Mobile Number" required="">
+        <input type="password" name="password" class="form-control" placeholder="Password" required="">
 
-        <button class="btn btn-lg btn-success btn-block" type="submit">Login now</button>
+        <button class="btn btn-lg btn-success btn-block" name="login_user" type="submit">Login now</button>
         <br>
         <a ui-sref="forgetpassword" href="#/forget-password" class="pull-right">Forgot password?</a>
         <hr>

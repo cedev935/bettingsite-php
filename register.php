@@ -1,3 +1,4 @@
+<?php include('includes/server.php') ?>
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +6,7 @@
     <script type="text/javascript">
         window.history.forward();
     </script>
-    <title>IIIT Ongole</title>
+    <title>Ludo Legion</title>
     <!--BootStrap assets hosted from CDN(Content Delivery Network for faster loading of pages) -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="resources/bootstrap.min.css">
@@ -76,15 +77,15 @@
 </head>
 
 <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" method="post" action="register.php" >
         <img class="mb-4" src="resources/lb.png" alt="" width="100" height="100">
         <h1 class="h3 mb-3 font-weight-normal">Register here!</h1>
 
-        <input type="text" id="name" class="form-control" placeholder="User name" required="" autofocus="">
-        <input type="number" id="PhoneNo" class="form-control" placeholder="Phone Number" required="">
-        <input type="password" id="password" class="form-control" placeholder="Password" required="">
+        <input type="text" name="user_name" class="form-control" placeholder="User name" required="" autofocus="">
+        <input type="number" name="phone_no" class="form-control" placeholder="Phone Number" required="">
+        <input type="password" name="password" class="form-control" placeholder="Password" required="">
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <button class="btn btn-lg btn-primary btn-block" name="reg_user" type="submit">Register</button>
         <hr>
 
         <div class="pull-right">
