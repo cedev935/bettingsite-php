@@ -9,7 +9,8 @@
             <div class="panel-group" style="font-family: sans-serif;font-size: 17px;">
                 <div class="panel panel-info" style="border-color: #222;">
                     <div class="panel-body" style="padding-left: 2%;">
-                        <i class="fa fa-share"></i> <b style="font-size: 24px">Match History</b><br><br>
+                       <hr>
+                        <i class="fa fa-share"></i> <b style="font-size: 24px">Match History</b><br><hr>
                         <i class="fa fa-share"></i> Total Winnings: 0 Chips (Count: 0)<br><br>
                         <i class="fa fa-share"></i> Total Losing: 0 Chips (Count: 0)<br><br>
                         <i class="fa fa-share"></i> No data to display.<br><br>

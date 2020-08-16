@@ -7,6 +7,7 @@
         window.history.forward();
     </script>
     <title>Ludo Legion</title>
+    <meta name="viewport" content="width=320, initial-scale=1">
     <!--BootStrap assets hosted from CDN(Content Delivery Network for faster loading of pages) -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="resources/bootstrap.min.css">

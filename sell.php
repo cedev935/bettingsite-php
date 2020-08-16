@@ -5,10 +5,11 @@
 <br>
 
 <div class="container">
-    <h2>
+    <h4>
         Sell Chips
-    </h2>
+    </h4>
 </div>
+<hr style="margin:0px 20px;">
 
 <div class="container">
     <div class="row">
@@ -40,13 +41,12 @@
 
                     </div>
                     <div class="row">
-                       <div class="col-sm-6">
-                           <button ng-disabled="disableBtn" ng-click="withdraw()" class="btn btn-success pull-right ng-binding">Submit</button>
-                       </div>
-                    <div class="col-sm-6">
-                        <button  class="btn btn-danger"target="_blank" href="https://t.me/ludobuddy"><i class="fa fa-question-circle"></i> Contact Support</button>
+                      <div class="col-6">
+                        <a target="_blank" href="https://t.me/ludobuddy"><i class="fa fa-question-circle"></i> <u>Contact Support</u></a>
                     </div>
-                        
+                       <div class="col-6 text-right">
+                           <button class="btn btn-success">Submit</button>
+                       </div>   
                     </div>
                 </form>
             </div>
@@ -54,9 +54,9 @@
             <hr>
             
             <div class="container">
-                <h1>
+                <h3>
                     Pending Requests
-                </h1>
+                </h3>
             </div>
         </div>
     </div>

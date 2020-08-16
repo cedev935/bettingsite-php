@@ -9,7 +9,7 @@
                 <div class="box box-default">
                     <div class="box-header with box-default">
                         <h2 class="text-center">
-                            <small>Current Balance</small><br>
+                            <strong>Current Balance</strong><br><hr>
                             <span class="text-success ng-binding">0</span><br>
                             <small>Chips</small><br><br>
                         </h2>

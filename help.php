@@ -14,9 +14,9 @@
     <span class="help-block">Chat us with facebook messenger.</span>
     <br>
 </div>
-
+<hr style="margin:5% 10%">
 <div class="container">
-   <h1>FAQ</h1>
+   <h2>FAQ</h2>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingThree">

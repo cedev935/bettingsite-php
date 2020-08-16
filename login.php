@@ -7,6 +7,7 @@
     <script type="text/javascript">
         window.history.forward();
     </script>
+    <meta name="viewport" content="width=320, initial-scale=1">
     <title>Ludo Legion</title>
     <!--BootStrap assets hosted from CDN(Content Delivery Network for faster loading of pages) -->
     <!-- Latest compiled and minified CSS -->
@@ -18,8 +19,8 @@
 
 <body class="text-center">
     <form class="form-signin" method="post" action="login.php">
-        <img class="mb-4" src="resources/lb.png" alt="" width="100" height="100">
-        <h1 class="h3 mb-3 font-weight-normal">Login here!</h1>
+        <img src="resources/lb.png" alt="" width="100" height="100">
+        <h1 class="h3 font-weight-normal">Login here!</h1>
 
         <input type="number" name="phone_no" class="form-control" placeholder="Mobile Number" required="">
         <input type="password" name="password" class="form-control" placeholder="Password" required="">
