@@ -75,7 +75,9 @@ if (isset($_POST['login_user'])) {
     if (mysqli_num_rows($res1) == 1){
         while ($row=mysqli_fetch_assoc($res1)) {
         $_SESSION['userLogin']='true';
-        $_SESSION['user_name']=$row['user_name'];}
+        $_SESSION['user_name']=$row['user_name'];
+        $_SESSION['phone_no']=$row['phone_no'];
+        }
         header('location: home.php');
     }
     else{
@@ -84,5 +86,70 @@ if (isset($_POST['login_user'])) {
   }
 }
 
+
+if (isset($_POST['set'])) {
+    
+//    function to check if user have enough chips to play
+    
+    
+    $user_name=$_SESSION['user_name'];
+    $amount= mysqli_real_escape_string($db, $_POST['amount']);
+    $status="Play";
+    $phone_no=$_SESSION['phone_no'];
+    
+//    insert the values to open matches
+    
+    $query = "INSERT INTO open (user_name, amount, status, phone_no) 
+  			  VALUES('$user_name', '$amount', '$status', '$phone_no')";
+  	$setGameQuery=mysqli_query($db, $query);
+    
+    if(!$setGameQuery){
+        die('Unable to set game now');
+    }
+      else{
+        echo "Game set successfully";
+      }   
+    
+}
+
+
+//open matches retriving
+
+$open = "SELECT * FROM open";
+$openQuery=mysqli_query($db, $open);
+
+
+//Matching players
+
+if (isset($_POST['cancel'])) {
+    $phone_no=$_SESSION['phone_no'];
+    $reject = "DELETE FROM open WHERE phone_no='$phone_no'";
+    mysqli_query($db, $reject);
+    header('location: home.php');
+}
+
+
+if (isset($_POST['accept'])) {
+    $phone_no=$_SESSION['phone_no'];
+    $reject = "DELETE FROM open WHERE phone_no='$phone_no'";
+    mysqli_query($db, $reject);
+    header('location: home.php');
+    
+    $player1=$_SESSION['user_name'];
+    $player2=player2;
+    $amount=betAmount;
+    
+    $query1 = "INSERT INTO running ($player1, $player2, $amount) 
+  			  VALUES('$player1', '$player2', '$amount')";
+  	$GameQuery=mysqli_query($db, $query1);
+    
+    if(!$GameQuery){
+        die('Unable to set game now');
+    }
+      else{
+        echo "Game set successfully";
+      } 
+    
+}
 
 ?>

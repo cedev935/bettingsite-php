@@ -1,5 +1,5 @@
 <?php include('includes/header.php');?>
-
+<?php include('includes/server.php');?>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
 
@@ -41,75 +41,100 @@
         </div>
     </div>
 
-    <section style="padding-top: 0px;">
-        <div class="row">
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-12">
-                <div class="box box-default">
+    <br>
 
-                    <div class="container">
-                        <form>
-                            <div class="input-group input-group-sm">
-                                <input min="50" step="50" style="z-index:0;" type="number" placeholder="Enter Match Amount Here" class="form-control ng-pristine ng-untouched ng-valid ng-valid-min">
-                                <span class="input-group-btn">
-                                    <button style="z-index:0;" ng-disabled="setBtn" type="submit" class="btn btn-success btn-sm">Set
-                                        Game</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-
-                    <hr>
-
-                    <div class="row" style="background: #f5f5f5">
-                        <div class="col-6">
-                            <h5>Open Matches</h5>
-                        </div>
-                        <div class="col-6 text-right"><button class="btn btn-sm btn-primary"><small>Chat with us</small></button></div>
-
-                    </div>
-                    <br>
-                    <div>
-                        <table class="table table-hover">
-                            <tr>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                            </tr>
-
-                        </table>
-
-                    </div>
-                    <br>
-
-
-
-                    <div class="row" style="background: #f5f5f5">
-                        <div class="col-8 text-justify">
-                            <h5>Running Matches <span class="badge badge-success ng-binding">34</span></h5>
-                        </div>
-                        <div class="col-4 text-right">
-                            <small>Users Online:18</small>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div>
-                        <table class="table table-hover">
-                            <tr>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                            </tr>
-
-                        </table>
-
-                    </div>
-                    <br>
-
-
-                </div>
+    <div>
+        <form method="post" action="home.php">
+            <div class="input-group input-group-sm">
+                <input type="number" placeholder="Enter Match Amount Here" name="amount" class="form-control">
+                <span class="input-group-btn">
+                    <button name="set" type="submit" class="btn btn-success btn-sm">Set
+                        Game</button>
+                </span>
             </div>
-        </div>
+        </form>
+    </div>
 
-        <?php include('includes/bottom_nav.php');?>
+
+
+    <hr>
+
+    <div class="row" style="background: #f5f5f5">
+        <div class="col-6">
+            <h5>Open Matches</h5>
+        </div>
+        <div class="col-6 text-right"><button class="btn btn-sm btn-primary"><small>Chat with us</small></button></div>
+
+    </div>
+    <br>
+
+    <script type="text/javascript">
+        function play() {
+            var Row = document.getElementById("somerow");
+            var Cells = Row.getElementsByTagName("td");
+            var player2=(Cells[0].innerText);
+            var betAmount=(Cells[1].innerText);
+        }
+    </script>
+
+
+    <div>
+        <form method="post" action="home.php">
+            <table class="table table-hover">
+                <tbody>
+                    <?php while ($r=mysqli_fetch_assoc($openQuery)) {
+          ?>
+                    <tr id="somerow">
+                        <td><span class="badge badge-primary"><?php  echo $r['user_name']; ?></span></td>
+
+                        <td><span class="badge badge-danger"><?php echo $r['amount']; ?></span></td>
+
+                        <!--                    If user sets the game-->
+                        <?php if($_SESSION['phone_no']==$r['phone_no']){
+                    ?>
+                        <td><button name="cancel" type="submit" class="btn btn-sm btn-danger">Cancel</button></td>
+                        <?php }
+                    else{
+                    ?>
+                        <td><button name="accept" type="submit" onclick="play()" class="btn btn-sm btn-success">Play</button></td>
+                        <?php } ?>
+
+                        <td><?php  echo $r['phone_no']; ?></td>
+
+
+                    </tr>
+                    <?php  } ?>
+                </tbody>
+
+            </table>
+        </form>
+    </div>
+    <br>
+
+
+
+    <div class="row" style="background: #f5f5f5">
+        <div class="col-8 text-justify">
+            <h5>Running Matches <span class="badge badge-success ng-binding">34</span></h5>
+        </div>
+        <div class="col-4 text-right">
+            <small>Users Online:18</small>
+        </div>
+    </div>
+    <hr>
+
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
+
+        </table>
+
+    </div>
+    <br>
+
+
+    <?php include('includes/bottom_nav.php');?>
