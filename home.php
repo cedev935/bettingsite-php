@@ -88,24 +88,26 @@
             var player2 = (Cells[0].innerText);
             var betAmount = (Cells[1].innerText);
             var phone_no = (Cells[3].innerText);
-            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no},
-                function(data)
-                   {
-                    
-                        alert("Go play ludo and come back with this id=")
-                        location.replace("http://192.168.225.51:8080/Projects/LudoLegion/home.php")
-                    
-                   });
+            $.post('home_ajax.php', {
+                    postplayer: player2,
+                    postphone: phone_no
+                },
+                function(data) {
+
+                    alert("Go play ludo and come back with this id=")
+                    location.replace("http://192.168.225.51:8080/Projects/LudoLegion/home.php")
+
+                });
         }
     </script>
 
-    
 
-      <!--    JQERY CDN-->
+
+    <!--    JQERY CDN-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    
-    
-    
+
+
+
 
     <div>
         <form method="post" action="home.php">
@@ -117,10 +119,10 @@
                         <td><span class="badge badge-primary"><?php  echo $r['user_name']; ?></span></td>
 
                         <td><span class="badge badge-danger"><?php echo $r['amount']; ?></span></td>
-                        
-                        
-                        
-                        
+
+
+
+
 
                         <!--                    If user sets the game-->
                         <?php if($_SESSION['phone_no']==$r['phone_no']){
@@ -129,15 +131,16 @@
                         <?php }
                     else{
                     ?>
-                       
-                       
-                       
+
+
+                        <!--                      If user wants to accept a game set by others-->
+
                         <td><button type="button" onclick="post(<?php  echo $r['phone_no']; ?>);" class="btn btn-sm btn-success">Play</button></td>
                         <?php } ?>
-        
-                        
-                        
-                        
+
+
+
+
 
                         <td><?php  echo $r['phone_no']; ?></td>
 

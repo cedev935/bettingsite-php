@@ -6,7 +6,8 @@
 
     </script>
     <meta name="viewport" content="width=320, initial-scale=1">
-    <title>IIIT Ongole</title>
+    <meta http-equiv="refresh" content="3" >
+    <title>Ludo Legion</title>
     <!--BootStrap assets hosted from CDN(Content Delivery Network for faster loading of pages) -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="resources/bootstrap.min.css">

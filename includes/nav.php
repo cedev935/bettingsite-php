@@ -15,7 +15,7 @@
                     <li class="nav-item"><a class="nav-link" href="settin.php">Settings</a></li>
                     <li class="nav-item"><a class="nav-link"href="help.php">Help</a></li>
                     <li class="nav-item"><a class="nav-link" href="terms.php">T & C</a></li>
-                    <li class="nav-item"><a class="nav-link"href="#">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link"href="includes/logout.php">Logout</a></li>
                 </ul>
 
         </ul>
