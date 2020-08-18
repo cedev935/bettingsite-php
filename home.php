@@ -82,8 +82,8 @@
 
 
     <script type="text/javascript">
-        function post() {
-            var Row = document.getElementById("somerow");
+        function post(phone) {
+            var Row = document.getElementById(phone);
             var Cells = Row.getElementsByTagName("td");
             var player2 = (Cells[0].innerText);
             var betAmount = (Cells[1].innerText);
@@ -113,7 +113,7 @@
                 <tbody>
                     <?php while ($r=mysqli_fetch_assoc($openQuery)) {
           ?>
-                    <tr id="somerow">
+                    <tr id="<?php echo $r['phone_no']; ?>">
                         <td><span class="badge badge-primary"><?php  echo $r['user_name']; ?></span></td>
 
                         <td><span class="badge badge-danger"><?php echo $r['amount']; ?></span></td>
@@ -132,7 +132,7 @@
                        
                        
                        
-                        <td><button type="button" onclick="post();" class="btn btn-sm btn-success">Play</button></td>
+                        <td><button type="button" onclick="post(<?php  echo $r['phone_no']; ?>);" class="btn btn-sm btn-success">Play</button></td>
                         <?php } ?>
         
                         
