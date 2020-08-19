@@ -1,9 +1,59 @@
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
-
-
-
 <?php include('includes/server.php');?>
+
+<!--for auto refresh tables without reload page-->
+
+
+<script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $("#open_tab_auto").load("open_table.php");
+            refresh();
+        }, 1000);
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $("#run_tab_auto").load("running_table.php");
+            refresh();
+        }, 1000);
+    });
+</script>
+
+
+<script type="text/javascript">
+        function post(phone) {
+            var Row = document.getElementById(phone);
+            var Cells = Row.getElementsByTagName("td");
+            var player2 = (Cells[0].innerText);
+            var betAmount = (Cells[1].innerText);
+            var phone_no = (Cells[3].innerText);   
+            var ludo_id = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < 6; i++ ) {
+                  ludo_id += characters.charAt(Math.floor(Math.random() * charactersLength));
+                  }
+            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no, postid:ludo_id, postamount:betAmount},
+                function(data)
+                   {
+                    
+                        alert("Go play ludo and come back with this id="+ludo_id)
+                        location.replace('home2_1.php')
+                    
+                   });
+        }
+    </script>
+    
+
+
+
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
 
@@ -39,6 +89,9 @@
 <br>
 <br>
 <br>
+<div class="container">
+    <h6><img style="width:10px;height:10px;" src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png" /> <?php echo $_SESSION['user_name'];?></h6>
+</div>
 
 <div class="container" style="padding-bottom: 75px; background: none;" class="ng-scope">
 
@@ -81,30 +134,7 @@
 
 
 
-    <script type="text/javascript">
-        function post(phone) {
-            var Row = document.getElementById(phone);
-            var Cells = Row.getElementsByTagName("td");
-            var player2 = (Cells[0].innerText);
-            var betAmount = (Cells[1].innerText);
-            var phone_no = (Cells[3].innerText);   
-            var ludo_id = '';
-            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-            var charactersLength = characters.length;
-            for ( var i = 0; i < 6; i++ ) {
-                  ludo_id += characters.charAt(Math.floor(Math.random() * charactersLength));
-                  }
-            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no, postid:ludo_id, postamount:betAmount},
-                function(data)
-                   {
-                    
-                        alert("Go play ludo and come back with this id="+ludo_id)
-                        location.replace('home2_1.php')
-                    
-                   });
-        }
-    </script>
-
+      
 
 
     <!--    JQERY CDN-->
@@ -113,48 +143,8 @@
 
 
 
-    <div>
-        <form method="post" action="home.php">
-            <table class="table table-hover">
-                <tbody>
-                    <?php while ($r=mysqli_fetch_assoc($openQuery)) {
-          ?>
-                    <tr id="<?php echo $r['phone_no']; ?>">
-                        <td><span class="badge badge-primary"><?php  echo $r['user_name']; ?></span></td>
-
-                        <td><span class="badge badge-danger"><?php echo $r['amount']; ?></span></td>
-
-
-
-
-
-                        <!--                    If user sets the game-->
-                        <?php if($_SESSION['phone_no']==$r['phone_no']){
-                    ?>
-                        <td><button name="cancel" type="submit" class="btn btn-sm btn-danger">Cancel</button></td>
-                        <?php }
-                    else{
-                    ?>
-
-
-                        <!--                      If user wants to accept a game set by others-->
-
-                        <td><button type="button" onclick="post(<?php  echo $r['phone_no']; ?>);" class="btn btn-sm btn-success">Play</button></td>
-                        <?php } ?>
-
-
-
-
-
-                        <td><?php  echo $r['phone_no']; ?></td>
-
-
-                    </tr>
-                    <?php  } ?>
-                </tbody>
-
-            </table>
-        </form>
+    <div id="open_tab_auto">
+<!--            OPEN MATCHES TABLE HERE-->
     </div>
     <br>
 
@@ -170,30 +160,9 @@
     </div>
     <hr>
 
-    <div>
-        <form method="post" action="home.php">
-            <table class="table table-hover">
-                <thead>
-                    <th>
-                        player1
-                    </th>
-                    <th>player2</th>
-                    <th>BetAmount</th>
-                </thead>
-                <tbody>
-                    <?php while ($r2=mysqli_fetch_assoc($runQuery)) {
-          ?>
-                    <tr>
-                        <td><span class="badge badge-primary"><?php  echo $r2['player1']; ?></span></td>
-                        <td><span class="badge badge-primary"><?php  echo $r2['player2']; ?></span></td>
-                        <td><span class="badge badge-danger"><?php echo $r2['amount']; ?></span></td>
-
-                    </tr>
-                    <?php  } ?>
-                </tbody>
-
-            </table>
-        </form>
+    <div id="run_tab_auto">
+<!--       RUNNING MATCHES TABLE HERE-->
+        
     </div>
     <br>
 
