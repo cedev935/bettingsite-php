@@ -7,12 +7,13 @@ include('includes/server.php');
     
     
     $player1=$_SESSION['user_name'];
-    $amount=50;
+    $amount=$_POST['postamount'];
     $player2=$_POST['postplayer'];
-    
-    
-    $query1 = "INSERT INTO running (player1, player2, amount) 
-  			  VALUES('$player1', '$player2', '$amount')";
+    $ludo_id=$_POST['postid'];
+
+    $room_id = mt_rand(100000,999999);  
+    $query1 = "INSERT INTO running (ludo_id , room_id, player1, player2, amount) 
+  			  VALUES('$ludo_id', '$room_id', '$player1', '$player2', '$amount')";
   	$GameQuery=mysqli_query($db, $query1);
     
     if(!$GameQuery){
@@ -20,6 +21,7 @@ include('includes/server.php');
     }
       else{
         echo "Game set successfully";
+        
       } 
 
 ?>
