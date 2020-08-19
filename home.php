@@ -87,17 +87,21 @@
             var Cells = Row.getElementsByTagName("td");
             var player2 = (Cells[0].innerText);
             var betAmount = (Cells[1].innerText);
-            var phone_no = (Cells[3].innerText);
-            $.post('home_ajax.php', {
-                    postplayer: player2,
-                    postphone: phone_no
-                },
-                function(data) {
-
-                    alert("Go play ludo and come back with this id=")
-                    location.replace("http://192.168.225.51:8080/Projects/LudoLegion/home.php")
-
-                });
+            var phone_no = (Cells[3].innerText);   
+            var ludo_id = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < 6; i++ ) {
+                  ludo_id += characters.charAt(Math.floor(Math.random() * charactersLength));
+                  }
+            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no, postid:ludo_id, postamount:betAmount},
+                function(data)
+                   {
+                    
+                        alert("Go play ludo and come back with this id="+ludo_id)
+                        location.replace('home2_1.php')
+                    
+                   });
         }
     </script>
 
