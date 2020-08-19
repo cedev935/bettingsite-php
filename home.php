@@ -43,7 +43,7 @@
                    {
                     
                         alert("Go play ludo and come back with this id="+ludo_id)
-                        location.replace('home2_1.php')
+                        location.replace('room.php')
                     
                    });
         }
