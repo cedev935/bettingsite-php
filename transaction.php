@@ -1,5 +1,6 @@
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
+<?php include('includes/server.php');?>
 <?php 
     $phone_no=$_SESSION['phone_no'];
     $noofchips="SELECT chips from chips where user='$phone_no'";

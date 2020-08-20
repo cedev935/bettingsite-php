@@ -20,7 +20,7 @@ if($isValidChecksum == "TRUE") {
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
 		echo "<b>Transaction status is success</b>" . "<br/>";
 		
-		$conn = new mysqli('localhost', 'root', '', 'ludo_legion');
+		$conn = new mysqli('localhost', 'root', '', 'ludo_legion1');
 		//Check connection
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);}
@@ -39,7 +39,7 @@ if($isValidChecksum == "TRUE") {
 	{ 
         
         // Create connection
-        $conn = new mysqli('localhost', 'root', '', 'ludo_legion');
+        $conn = new mysqli('localhost', 'root', '', 'ludo_legion1');
         // Check connection
         if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

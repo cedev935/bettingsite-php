@@ -10,7 +10,6 @@
                     <li class="nav-item"><a  class="nav-link" href="home.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="TxnTest.php">Buy Tokens</a></li>
                     <li class="nav-item"><a class="nav-link" href="sell.php">Sell Tokens</a></li>
-                    <li class="nav-item"><a class="nav-link" href="history.php">History</a></li>
                     <li class="nav-item"><a class="nav-link" href="transaction.php">Transaction</a></li>
                     <li class="nav-item"><a class="nav-link" href="settin.php">Settings</a></li>
                     <li class="nav-item"><a class="nav-link"href="help.php">Help</a></li>
