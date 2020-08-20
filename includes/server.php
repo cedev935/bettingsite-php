@@ -97,18 +97,30 @@ if (isset($_POST['set'])) {
     $status="Play";
     $phone_no=$_SESSION['phone_no'];
     
-//    insert the values to open matches
+    // check if the user is already creaated the game.......
     
-    $query = "INSERT INTO open (user_name, amount, status, phone_no) 
-  			  VALUES('$user_name', '$amount', '$status', '$phone_no')";
-  	$setGameQuery=mysqli_query($db, $query);
+    $check="SELECT * from open WHERE phone_no='$phone_no'";
+    $resu=mysqli_query($db,$check);    
     
-    if(!$setGameQuery){
-        die('Unable to set game now');
+   //check if the user is already matched and playing with user
+  
+    $running="SELECT * from running WHERE player1='$user_name' or player2='$user_name'";
+    $res=mysqli_query($db,$running);   
+
+    //insert the values to open matches
+  
+    if(mysqli_num_rows($resu)!=1 and mysqli_num_rows($res)!=1 ){
+         $query = "INSERT INTO open (user_name, amount, status, phone_no) 
+            VALUES('$user_name', '$amount', '$status', '$phone_no')";
+      $setGameQuery=mysqli_query($db, $query);
+      
+      if(!$setGameQuery){
+          die('Unable to set game now');
+      }
+        else{
+          echo "Game set successfully";
+        }   
     }
-      else{
-        echo "Game set successfully";
-      }   
     
 }
 
