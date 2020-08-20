@@ -1,5 +1,10 @@
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
+<?php 
+    $phone_no=$_SESSION['phone_no'];
+    $noofchips="SELECT chips from chips where user='$phone_no'";
+    $res=mysqli_query($db,$noofchips);
+ ?>
 <br>
  <br>
  <br>
@@ -10,7 +15,15 @@
                     <div class="box-header with box-default">
                         <h2 class="text-center">
                             <strong>Current Balance</strong><br><hr>
-                            <span class="text-success ng-binding">0</span><br>
+                            <span class="text-success ng-binding">
+				<?php 
+                                if(mysqli_num_rows($res)==1){
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        echo $row['chips'];
+                                    }
+                                }
+                                ?>
+			    </span><br>
                             <small>Chips</small><br><br>
                         </h2>
                     </div>
