@@ -19,6 +19,15 @@ if($isValidChecksum == "TRUE") {
 	echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
 		echo "<b>Transaction status is success</b>" . "<br/>";
+		
+		$conn = new mysqli('localhost', 'root', '', 'ludo_legion');
+		//Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);}
+		$amount=$_POST['TXNAMOUNT'];
+		$phone_no=$_SESSION['phone_no'];
+		$sql="UPDATE chips set chips=chips+$amount where user='$phone_no'";
+		mysqli_query($conn,$sql);
 		//Process your transaction here as success transaction.
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
 	}
