@@ -25,6 +25,16 @@
     });
 </script>
 
+<script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $("#room").load("room_auto.php");
+            refresh();
+        }, 30000);
+    });
+</script>
+
+
 
 <script type="text/javascript">
         function post(phone) {
@@ -107,6 +117,11 @@
     </div>
 
     <br>
+    
+    <div id="room">
+<!--        Room Code Here-->
+    </div>
+    
 
     <div>
         <form method="post" action="home.php">

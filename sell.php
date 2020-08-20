@@ -4,6 +4,37 @@
 <br>
 <br>
 
+<?php include('includes/server.php');?>
+
+
+<?php
+
+//Place a withdrawal request
+
+
+if (isset($_POST['withdraw'])) {
+    $user=$_SESSION['user_name'];
+    $phone_no=$_POST['phone_no'];
+    $amount=$_POST['amount'];
+    $insert = "INSERT INTO withdraw_req (user_name, phone_no, amount) 
+            VALUES('$user', '$phone_no', '$amount')";
+    mysqli_query($db, $insert);
+}
+
+$pho=$_SESSION['phone_no'];
+$with = "SELECT * FROM withdraw_req WHERE phone_no='$pho'";
+$withDraw=mysqli_query($db, $with);
+?>
+
+
+<!--Script to avoid form resubmission-->
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+
+
 <div class="container">
     <h4>
         Sell Chips
@@ -13,51 +44,72 @@
 
 <div class="container">
     <div class="row">
-        <div class="clearfix visible-sm-block"></div>
+       
         <div class="col-md-12">
-            <div class="box box-info">
-                <form onsubmit="return false;" class="form-horizontal ng-pristine ng-valid ng-valid-min">
-                    <div class="box-body">
+                <form method="post"  action="sell.php">
+            
                         <div class="form-group">
-                            <label for="amount" class="col-sm-2 control-label">Amount</label>
+                            <label class="col-sm-2 control-label">Amount</label>
 
                             <div class="col-sm-10">
-                                <input ng-model="amount" type="number" min="1" class="form-control ng-pristine ng-untouched ng-valid ng-valid-min" id="amount" placeholder="Withdraw Chips">
+                                <input type="number" class="form-control" name="amount" placeholder="Withdraw Chips">
                                 <span class="text-primary">Minimum Withdraw: 50Chips </span>
                             </div>
                         </div>
 
-                        <!-- ngIf: false -->
 
                         <div class="form-group">
-                            <!-- ngIf: data.type=='upi' -->
-                            <!-- ngIf: data.type=='paytm' --><label for="mobile" ng-if="data.type=='paytm'" class="col-sm-2 control-label ng-scope">Mobile No.</label><!-- end ngIf: data.type=='paytm' -->
+                            <label class="col-sm-2">Mobile No.</label>
                             <div class="col-sm-10">
-                                <!-- ngIf: data.type=='upi' -->
-                                <!-- ngIf: data.type=='paytm' --><input ng-model="data.paytm" ng-if="data.type=='paytm'" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-scope" placeholder="Paytm number"><!-- end ngIf: data.type=='paytm' -->
+                                <input type="number" name="phone_no" class="form-control" placeholder="Paytm number">
                                 <span class="text-default">Withdrawal may take upto 6-48 Hours</span>
                             </div>
                         </div>
 
-                    </div>
+            
                     <div class="row">
-                      <div class="col-6">
-                        <a target="_blank" href="https://t.me/ludobuddy"><i class="fa fa-question-circle"></i> <u>Contact Support</u></a>
-                    </div>
-                       <div class="col-6 text-right">
-                           <button class="btn btn-success">Submit</button>
-                       </div>   
+                        <div class="col-6">
+                            <a target="_blank" href="https://t.me/ludobuddy"><i class="fa fa-question-circle"></i> <u>Contact Support</u></a>
+                        </div>
+                        <div class="col-6 text-right">
+                            <button name="withdraw" type="submit" class="btn btn-success">Submit</button>
+                        </div>
                     </div>
                 </form>
-            </div>
+            
             <br>
             <hr>
-            
+
             <div class="container">
                 <h3>
                     Pending Requests
                 </h3>
             </div>
+            <div class="container">
+                <form method="post" action="home.php">
+                    <table class="table table-hover">
+                        <thead>
+                            <th>
+                                Paytm_Number
+                            </th>
+                            <th>Withdrawal Amount</th>
+                        </thead>
+                        <tbody>
+                            <?php while ($r2=mysqli_fetch_assoc($withDraw)) {
+          ?>
+                            <tr>
+                                <td><span class="badge badge-primary"><?php  echo $r2['phone_no']; ?></span></td>
+                                <td><span class="badge badge-danger"><?php echo $r2['amount']; ?></span></td>
+
+                            </tr>
+                            <?php  } ?>
+                        </tbody>
+
+                    </table>
+                </form>
+            </div>
+
+
         </div>
     </div>
 </div>

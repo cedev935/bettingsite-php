@@ -3,7 +3,7 @@
 <?php include('../includes/db_connect.php');?>
 
 <?php
-$running = "SELECT * FROM withdraw";
+$running = "SELECT * FROM withdraw_req";
 $runQuery=mysqli_query($db, $running);
 ?>
 
@@ -31,8 +31,9 @@ $runQuery=mysqli_query($db, $running);
                 <?php while ($r2=mysqli_fetch_assoc($runQuery)) {
           ?>
                 <tr>
-                    <td><span class="badge badge-primary"><?php  echo $r2['phone']; ?></span></td>
-                    <td><span class="badge badge-primary"><?php  echo $r2['amount']; ?></span></td>
+                    <td><span class="badge badge-primary"><?php  echo $r2['phone_no']; ?></span></td>
+                    <td><span class="badge badge-success"><?php  echo $r2['user_name']; ?></span></td>
+                    <td><span class="badge badge-danger"><?php  echo $r2['amount']; ?></span></td>
                     <td><button class="btn btn-success">Money Sent</button></td>
 
                 </tr>

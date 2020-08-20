@@ -9,10 +9,9 @@
             <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"><a  class="nav-link" href="home.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="withdraw_req.php">Withdrawal Requests</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sell.php">Winners Approve</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Log out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="approve_winners.php">Approve Winners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../includes/logout.php">Log out</a></li>
                 </ul>
-
         </ul>
     </div>
     

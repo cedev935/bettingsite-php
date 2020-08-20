@@ -63,6 +63,10 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    echo "<script>alert('Uploaded')</script>";
+    $ph=$_SESSION['phone_no'];
+    $query1 = "INSERT INTO permanent select * from running where phone_no='$ph'";
+    header('location: ../home.php');
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
