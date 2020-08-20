@@ -1,8 +1,29 @@
 <?php
-$target_dir = "uploads/";
+session_start();
+$radioVal = $_POST["match_status"];
+
+if($radioVal == "won")
+{
+    echo("You won");
+    
+    $target_dir = "won/";
+}
+else if ($radioVal == "loose")
+{
+    echo("You lost");
+    $target_dir = "loose/";
+}
+else{
+    echo("Its a tie");
+    $target_dir = "tie/";
+}
+
+
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+//$target_file = $target_dir . basename($_SESSION['user_name']);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+echo $imageFileType;
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -23,7 +44,7 @@ if (file_exists($target_file)) {
 }
 
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }

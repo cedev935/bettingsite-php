@@ -15,7 +15,7 @@ include('includes/server.php');
     $running="SELECT * from running WHERE player1='$user' or player2='$user'";
     $res=mysqli_query($db,$running);
     if(mysqli_num_rows($res)==1){
-        header('location:home2_1.php');
+        header('location:room.php');
     }
     else{
     $room_id = mt_rand(100000,999999);  

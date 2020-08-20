@@ -86,16 +86,27 @@
 <hr>
 
 <div class="container">
-    <h5 class="ml-5">Match Status:</h5>
-    <input class="ml-5 " type="radio" name="favorite_pet" value="Cats"> I won<br>
-    <input class="ml-5" type="radio" name="favorite_pet" value="Dogs"> I loss<br>
-    <input class="ml-5" type="radio" name="favorite_pet" value="Birds"> Cancel<br>
-    <br>
-    
-    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <form action="uploads/upload.php" method="post" enctype="multipart/form-data">
+
+        <h5 class="ml-5">Match Status:</h5>
+        <input class="ml-5 " type="radio" name="match_status" value="won"> I won<br>
+        <input class="ml-5" type="radio" name="match_status" value="loose"> I loss<br>
+        <input class="ml-5" type="radio" name="match_status" value="tie"> Tie<br>
+        <br>
+
+
         Select screenshot image to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
+        <div class="row">
+            <div class="col-sm-6">
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <br>
+                <hr>
+            </div>
+
+            <div class="col-sm-6 text-right">
+                <input class="btn-success" type="submit" value="Upload Image" name="submit">
+            </div>
+        </div>
     </form>
 
 </div>
