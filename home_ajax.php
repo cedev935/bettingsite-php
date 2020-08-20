@@ -10,7 +10,14 @@ include('includes/server.php');
     $amount=$_POST['postamount'];
     $player2=$_POST['postplayer'];
     $ludo_id=$_POST['postid'];
-
+    
+    $user=$_SESSION['user_name'];
+    $running="SELECT * from running WHERE player1='$user' or player2='$user'";
+    $res=mysqli_query($db,$running);
+    if(mysqli_num_rows($res)==1){
+        header('location:home2_1.php');
+    }
+    else{
     $room_id = mt_rand(100000,999999);  
     $query1 = "INSERT INTO running (ludo_id , room_id, player1, player2, amount) 
   			  VALUES('$ludo_id', '$room_id', '$player1', '$player2', '$amount')";
@@ -23,5 +30,5 @@ include('includes/server.php');
         echo "Game set successfully";
         
       } 
-
+    }
 ?>
