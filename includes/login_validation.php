@@ -1,6 +1,6 @@
 <?php
-	if(!empty($_SESSION['userLogin'])=='true'){
-		die("You must login first, Go to http://www.ludosociety.com/login.php to login");
-	    //header("Location:sample_login.php");
+	if(empty($_SESSION['userLogin']) || $_SESSION['userLogin'] == ''){
+	    //header("Location: login.php");
+	    die("You must login first, Go to http://www.ludosociety.com/login.php to login");
 	}
 ?>
