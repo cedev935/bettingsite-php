@@ -1,3 +1,5 @@
+<?php include('includes/server.php');?>
+<?php include('includes/login_validation.php'); ?>
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
 
