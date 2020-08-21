@@ -86,10 +86,11 @@
 <div class="container">
     <form action="uploads/upload.php" method="post" enctype="multipart/form-data">
 
-        <h5 class="ml-5">Match Status:</h5>
-        <input class="ml-5 " type="radio" name="match_status" value="won"> I won<br>
-        <input class="ml-5" type="radio" name="match_status" value="loose"> I loss<br>
-        <input class="ml-5" type="radio" name="match_status" value="tie"> Tie<br>
+        <h5 class="ml-3">Match Status:</h5>
+        <p class='ml-3'>LUDO ID:<input class='ml-1' type="text" name="ludo_id"></p>
+        <input class="ml-3 " type="radio" name="match_status" value="won"> I won<br>
+        <input class="ml-3" type="radio" name="match_status" value="loose"> I loss<br>
+        <input class="ml-3" type="radio" name="match_status" value="cancel"> Cancel<br>
         <br>
 
 
