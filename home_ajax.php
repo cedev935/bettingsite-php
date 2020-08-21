@@ -22,6 +22,9 @@ include('includes/server.php');
     $query1 = "INSERT INTO running (ludo_id , room_id, player1, player2, amount) 
   			  VALUES('$ludo_id', '$room_id', '$player1', '$player2', '$amount')";
   	$GameQuery=mysqli_query($db, $query1);
+
+    $query2="INSERT INTO history VALUES('NULL','NULL','$ludo_id',$amount)";
+    mysqli_query($db,$query2);
     
     if(!$GameQuery){
         die('Unable to set game now');
