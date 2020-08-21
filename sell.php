@@ -1,10 +1,11 @@
+<?php include('includes/server.php');?>
+<?php include('includes/login_validation.php'); ?>
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
 <br>
 <br>
 <br>
 
-<?php include('includes/server.php');?>
 
 
 <?php
@@ -16,9 +17,23 @@ if (isset($_POST['withdraw'])) {
     $user=$_SESSION['user_name'];
     $phone_no=$_POST['phone_no'];
     $amount=$_POST['amount'];
-    $insert = "INSERT INTO withdraw_req (user_name, phone_no, amount) 
-            VALUES('$user', '$phone_no', '$amount')";
-    mysqli_query($db, $insert);
+
+    $check="SELECT chips from chips WHERE user='$phone_no'";
+    $res=mysqli_query($db,$check);
+    if(mysqli_num_rows($res)==1){
+        while($row=mysqli_fetch_assoc($res)){
+            $chip=$row['chips'];
+            if($chip>=$amount){
+                  $insert = "INSERT INTO withdraw_req (user_name, phone_no, amount) VALUES('$user', '$phone_no', '$amount')";
+                   mysqli_query($db, $insert);
+            }
+            else{
+                array_push($errors, "Not Enough Chips...");
+            }
+        }
+    }
+
+  
 }
 
 $pho=$_SESSION['phone_no'];
@@ -47,7 +62,13 @@ $withDraw=mysqli_query($db, $with);
        
         <div class="col-md-12">
                 <form method="post"  action="sell.php">
-            
+                        <?php  if (count($errors) > 0){ ?>
+                            <div class="alert alert-danger alert-dismissible">
+                              <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              <strong><?php include ('includes/errors.php');?></strong>
+                            </div>
+                            <?php } ?>
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Amount</label>
 
