@@ -40,6 +40,12 @@ if ($success === true)
 {
     $html = "<p>Your payment was successful</p>
              <p>Payment ID: {$_POST['razorpay_payment_id']}</p>";
+        
+         $db = mysqli_connect('localhost', 'root', '', 'ludo_legion');  
+         $amount=$_SESSION['amount'];
+         $number=$_SESSION['number'];
+         $sql="UPDATE chips set chips=chips+$amount where user='$number'";
+         mysqli_query($db,$sql);
 }
 else
 {
