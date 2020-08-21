@@ -3,6 +3,11 @@
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
 
+<script type="text/javascript">
+        window.history.forward();
+
+</script>
+
 
 <!--for auto refresh tables without reload page-->
 
