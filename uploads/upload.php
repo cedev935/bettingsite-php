@@ -1,6 +1,7 @@
+<?php include("../includes/server.php");?>
 <?php
-session_start();
 $radioVal = $_POST["match_status"];
+$ludo_id = $_POST['ludo_id'];
 
 if($radioVal == "won")
 {
@@ -14,8 +15,8 @@ else if ($radioVal == "loose")
     $target_dir = "loose/";
 }
 else{
-    echo("Its a tie");
-    $target_dir = "tie/";
+    echo("cancel");
+    $target_dir = "cancel/";
 }
 
 
@@ -60,14 +61,47 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
-} else {
+} 
+else {  
+  
+   
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     echo "<script>alert('Uploaded')</script>";
-    $ph=$_SESSION['phone_no'];
-    $query1 = "INSERT INTO permanent select * from running where phone_no='$ph'";
-    header('location: ../home.php');
-  } else {
+
+     $ph=$_SESSION['phone_no'];
+    $user=$_SESSION['user_name'];
+    
+     if ($radioVal =='won'){
+        $sql="UPDATE history set winner='$ph' where ludo_id='$ludo_id'";
+        mysqli_query($db,$sql);      
+      }
+  if ($radioVal =='loose'){
+        $sql="UPDATE history set looser='$ph' where ludo_id='$ludo_id'";
+        mysqli_query($db,$sql);      
+      }
+   if ($radioVal =='cancel'){
+        $query2="DELETE from running where player1='$user' or player2='$user'";
+        mysqli_query($db,$query2);
+        $query1="DELETE from history where ludo_id='$ludo_id'";
+        mysqli_query($db,$query1); 
+      }
+
+
+   $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
+   $res=mysqli_query($db,$sql);
+   if(mysqli_num_rows($res)==1){
+      while($row=mysqli_fetch_assoc($res)){
+          $winner=$row['winner'];
+          $looser=$row['looser'];
+          if($winner!='NULL' and $looser!='NULL'){
+              $query2="DELETE from running where player1='$user' or player2='$user'";
+              mysqli_query($db,$query2); 
+          }
+      }
+   }
+  } 
+  else {
     echo "Sorry, there was an error uploading your file.";
   }
 }
