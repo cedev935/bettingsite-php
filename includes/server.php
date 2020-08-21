@@ -42,6 +42,9 @@ if (isset($_POST['reg_user'])) {
   	$query = "INSERT INTO users (user_name, phone_no, password) 
   			  VALUES('$user_name', '$phone_no', '$password')";
   	$registerQuery=mysqli_query($db, $query);
+     $query1 = "INSERT INTO chips (user,chips) 
+          VALUES('$phone_no', 0)";
+    $registerQuery1=mysqli_query($db, $query1);
     
     if(!$registerQuery){
         die('Registration Failed');
