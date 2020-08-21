@@ -8,7 +8,7 @@
         <ul class="navbar-nav ml-auto">
             <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"><a  class="nav-link" href="home.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="TxnTest.php">Buy Tokens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="razor/">Buy Tokens</a></li>
                     <li class="nav-item"><a class="nav-link" href="sell.php">Sell Tokens</a></li>
                     <li class="nav-item"><a class="nav-link" href="transaction.php">Transaction</a></li>
                     <li class="nav-item"><a class="nav-link" href="settin.php">Settings</a></li>
