@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript">
-        window.history.forward();
-
-    </script>
     <meta name="viewport" content="width=320, initial-scale=1">
     
     <title>Ludo Society</title>
