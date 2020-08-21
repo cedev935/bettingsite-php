@@ -1,6 +1,12 @@
+<?php include('includes/server.php');?>
+<?php include('includes/login_validation.php'); ?>
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
-<?php include('includes/server.php');?>
+
+<script type="text/javascript">
+        window.history.forward();
+
+</script>
 
 
 <!--for auto refresh tables without reload page-->
@@ -117,6 +123,13 @@
     </div>
 
     <br>
+    
+     <?php  if (count($errors) > 0){ ?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong><?php include ('includes/errors.php');?></strong>
+        </div>
+    <?php } ?>
     
     <div id="room">
 <!--        Room Code Here-->
