@@ -90,37 +90,54 @@ if (isset($_POST['login_user'])) {
 if (isset($_POST['set'])) {
     
 //    function to check if user have enough chips to play
-    
-    
     $user_name=$_SESSION['user_name'];
     $amount= mysqli_real_escape_string($db, $_POST['amount']);
     $status="Play";
     $phone_no=$_SESSION['phone_no'];
-    
-    // check if the user is already creaated the game.......
-    
-    $check="SELECT * from open WHERE phone_no='$phone_no'";
-    $resu=mysqli_query($db,$check);    
-    
-   //check if the user is already matched and playing with user
-  
-    $running="SELECT * from running WHERE player1='$user_name' or player2='$user_name'";
-    $res=mysqli_query($db,$running);   
 
-    //insert the values to open matches
-  
-    if(mysqli_num_rows($resu)!=1 and mysqli_num_rows($res)!=1 ){
-         $query = "INSERT INTO open (user_name, amount, status, phone_no) 
-            VALUES('$user_name', '$amount', '$status', '$phone_no')";
-      $setGameQuery=mysqli_query($db, $query);
-      
-      if(!$setGameQuery){
-          die('Unable to set game now');
+
+    $check="SELECT chips from chips WHERE user='$phone_no'";
+    $res=mysqli_query($db,$check);
+    if(mysqli_num_rows($res)==1){
+        while($row=mysqli_fetch_assoc($res)){
+            $chip=$row['chips'];
+            if($chip<=$amount){
+                 array_push($errors, "Not Enough Chips");
+                 //header('location:buy.php');
+            }
+            else{    
+
+               // check if the user is already creaated the game.......
+          
+                  $check="SELECT * from open WHERE phone_no='$phone_no'";
+                  $resu=mysqli_query($db,$check);    
+                  
+                 //check if the user is already matched and playing with user
+                
+                  $running="SELECT * from running WHERE player1='$user_name' or player2='$user_name'";
+                  $res=mysqli_query($db,$running);   
+
+                  //insert the values to open matches
+                
+                  if(mysqli_num_rows($resu)!=1 and mysqli_num_rows($res)!=1 ){
+                       $query = "INSERT INTO open (user_name, amount, status, phone_no) 
+                          VALUES('$user_name', '$amount', '$status', '$phone_no')";
+                    $setGameQuery=mysqli_query($db, $query);
+                    
+                    if(!$setGameQuery){
+                        die('Unable to set game now');
+                    }
+                      else{
+                        echo "Game set successfully";
+                      }   
+                  }
+
+            }
+          }
       }
-        else{
-          echo "Game set successfully";
-        }   
-    }
+
+    
+   
     
 }
 
