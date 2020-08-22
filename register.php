@@ -79,6 +79,13 @@
 
 <body class="text-center">
     <form class="form-signin" method="post" action="register.php" >
+       <?php  if (count($errors) > 0){ ?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong><?php include ('includes/errors.php');?></strong>
+        </div>
+    <?php } ?>
+    
         <img class="mb-4" src="resources/lb.png" alt="" width="100" height="100">
         <h1 class="h3 mb-3 font-weight-normal">Register here!</h1>
 

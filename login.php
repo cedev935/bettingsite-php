@@ -17,8 +17,16 @@
     <link rel="stylesheet" type="text/css" href="resources/login.css">
 </head>
 
+
 <body class="text-center">
     <form class="form-signin" method="post" action="login.php">
+        <?php  if (count($errors) > 0){ ?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong><?php include ('includes/errors.php');?></strong>
+        </div>
+        <?php } ?>
+
         <img src="resources/1b.png" alt="" width="100" height="100">
         <h1 class="h3 font-weight-normal">Login here!</h1>
 
@@ -34,7 +42,7 @@
         </div>
         <p class="mt-5 mb-3 text-muted">© Ludo Legion Team</p>
     </form>
-    
+
 </body>
 
 </html>

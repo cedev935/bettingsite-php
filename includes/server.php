@@ -6,8 +6,8 @@ $phone_no    = "";
 $errors = array(); 
 
 // connect to the database and include functions
-include('C:\xampp\htdocs\ludo9\includes\db_connect.php');
-include('C:\xampp\htdocs\ludo9\includes\header.php');
+include('includes\db_connect.php');
+include('includes\header.php');
 
 
 // REGISTER USER
@@ -32,7 +32,7 @@ if (isset($_POST['reg_user'])) {
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { // if user exists
-    if ($user['user_name'] === $username) {
+    if ($user['user_name'] === $user_name) {
       array_push($errors, "Username already exists");
     }
     if($user['email']===$email){
@@ -86,6 +86,7 @@ if (isset($_POST['login_user'])) {
         $_SESSION['userLogin']='true';
         $_SESSION['user_name']=$row['user_name'];
         $_SESSION['phone_no']=$row['phone_no'];
+        $_SESSION['password']=$row['password'];   
         }
         echo '<div class="alert alert-success" role="alert">
   This is a success alert—check it out!

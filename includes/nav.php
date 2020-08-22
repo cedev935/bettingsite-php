@@ -13,7 +13,9 @@
                     <li class="nav-item"><a class="nav-link" href="transaction.php">Transaction</a></li>
                     <li class="nav-item"><a class="nav-link" href="settin.php">Settings</a></li>
                     <li class="nav-item"><a class="nav-link"href="help.php">Help</a></li>
-                    <li class="nav-item"><a class="nav-link"href="admin/admin.php">admin</a></li>
+                    <li class="nav-item"><?php if($_SESSION['phone_no'] == '770' && $_SESSION['password'] == 'Team@21' ){ ?>
+                <a href="admin/admin.php" class="nav-link">Admin</a>
+                <?php } ?></li>
                     <li class="nav-item"><a class="nav-link" href="terms.php">T & C</a></li>
                     <li class="nav-item"><a class="nav-link"href="includes/logout.php">Logout</a></li>
                 </ul>

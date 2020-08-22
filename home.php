@@ -17,7 +17,7 @@
         setInterval(function() {
             $("#open_tab_auto").load("open_table.php");
             refresh();
-        }, 1000);
+        }, 5000);
     });
 </script>
 
