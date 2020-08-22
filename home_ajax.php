@@ -10,6 +10,14 @@ include('includes/server.php');
     $amount=$_POST['postamount'];
     $player2=$_POST['postplayer'];
     $ludo_id=$_POST['postid'];
+    
+    //on click play update the chips minus the chips from users
+    $minus="UPDATE chips set chips=chips-$amount WHERE user_name='$player1'";
+    mysqli_query($db,$minus);
+
+    $minus1="UPDATE chips set chips=chips-$amount WHERE user_name='$player2'";
+    mysqli_query($db,$minus1);
+
 
 
     //send mail to player 2
@@ -33,7 +41,9 @@ include('includes/server.php');
   			  VALUES('$ludo_id', '$room_id', '$player1', '$player2', '$amount')";
   	$GameQuery=mysqli_query($db, $query1);
 
-    $query2="INSERT INTO history VALUES('NULL','NULL','$ludo_id',$amount)";
+    $money=$amount;
+    $money=$money*2;
+    $query2="INSERT INTO history VALUES('NULL','NULL','$ludo_id','$money')";
     mysqli_query($db,$query2);
     
     if(!$GameQuery){
