@@ -80,10 +80,10 @@ else {
         $sql="UPDATE history set looser='$ph' where ludo_id='$ludo_id'";
         mysqli_query($db,$sql);      
       }
-   if ($radioVal =='cancel'){
+    if ($radioVal =='cancel'){
         $query2="DELETE from running where player1='$user' or player2='$user'";
         mysqli_query($db,$query2);
-        $query1="DELETE from history where ludo_id='$ludo_id'";
+        $query1="DELETE from history where ludo_id='$ludo_id' or winner='$ph' or looser='$ph'";
         mysqli_query($db,$query1); 
       }
 
