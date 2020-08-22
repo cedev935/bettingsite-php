@@ -10,6 +10,17 @@ include('includes/server.php');
     $amount=$_POST['postamount'];
     $player2=$_POST['postplayer'];
     $ludo_id=$_POST['postid'];
+
+
+    //send mail to player 2
+    $email="SELECT email from users WHERE user_name='$player2'";
+    $res=mysqli_query($db,$email);
+    if(mysqli_num_rows($res)==1){
+        while($row=mysqli_fetch_assoc($res)){
+            $email=$row['email'];
+            $send = mail($email,'LUDO SOCIETY','Hi you opponent is ready Go to http://www.ludosociety.com/room.php for room code ','From :sai325637@gmail.com');
+        }
+    }
     
     $user=$_SESSION['user_name'];
     $running="SELECT * from running WHERE player1='$user' or player2='$user'";
