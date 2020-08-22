@@ -98,7 +98,7 @@
         <hr>
 
         <div class="pull-right">
-            Already Registered? <a ui-sref="login" href="login.php"> Log
+            Already Registered? <a ui-sref="login" href="index.php"> Log
                 In</a>
         </div>
         <p class="mt-5 mb-3 text-muted">© 2017-2020</p>

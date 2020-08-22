@@ -141,7 +141,3 @@
 </div>
 -->
 
-
-
-
-<?php include('../includes/bottom_nav.php');?>

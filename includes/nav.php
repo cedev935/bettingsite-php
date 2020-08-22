@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-dark  bg-dark fixed-top">
+
+    <?php include('server.php'); ?>
+
+    <nav class="navbar navbar-expand-md navbar-dark  bg-dark fixed-top">
 
     <a class="navbar-brand">Ludo Society</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

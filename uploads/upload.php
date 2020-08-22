@@ -62,13 +62,7 @@ if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } 
-else {  
-  
-   
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    echo "<script>alert('Uploaded')</script>";
-
+else {
      $ph=$_SESSION['phone_no'];
     $user=$_SESSION['user_name'];
     
@@ -88,7 +82,14 @@ else {
       }
 
 
-   $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
+   
+  
+   
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    echo "<script>alert('Uploaded')</script>";
+      
+      $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
    $res=mysqli_query($db,$sql);
    if(mysqli_num_rows($res)==1){
       while($row=mysqli_fetch_assoc($res)){
@@ -100,6 +101,8 @@ else {
           }
       }
    }
+
+    
   } 
   else {
     echo "Sorry, there was an error uploading your file.";

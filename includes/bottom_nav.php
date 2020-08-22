@@ -5,9 +5,9 @@
 			<img class="spinImg" src="resources/chip2.png" alt="" height="25px" width="25px">
 			<br> 0 <small>Chips</small>
 		</div>
-		<div class="col-4 text-center" href="#/app/playLudo">
+		<div class="col-4 text-center" href="../home.php">
 			<span class="spinImg" style="font-size: 21px;">🎲</span>
-			<br> <small>Vicky321</small>
+			<br> <small><?php echo $_SESSION['user_name'];?></small>
 		</div>
 		<div class="col-4 text-center" href="#/app/matches">
 			<p>

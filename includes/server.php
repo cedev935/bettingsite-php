@@ -6,7 +6,7 @@ $phone_no    = "";
 $errors = array(); 
 
 // connect to the database and include functions
-include('includes\db_connect.php');
+include('includes\db_connccect.php');
 include('includes\header.php');
 
 
@@ -20,10 +20,10 @@ if (isset($_POST['reg_user'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $includes/errors array
-  if (empty($user_name)) { array_push($errors, "Username is required"); }
-  if (empty($phone_no)) { array_push($errors, "Role must be checked"); }
-  if (empty($password)) { array_push($errors, "Password is required"); }
-  if (empty($password)) { array_push($errors, "email is required"); }
+//  if (empty($user_name)) { array_push($errors, "Username is required"); }
+//  if (empty($phone_no)) { array_push($errors, "Role must be checked"); }
+//  if (empty($password)) { array_push($errors, "Password is required"); }
+//  if (empty($password)) { array_push($errors, "email is required"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -61,7 +61,7 @@ if (isset($_POST['reg_user'])) {
         alert("Registered successfully! Login now.."); 
         </script>'; 
         sleep(2);
-       header('location: login.php');
+       header('location: index.php');
       }
   }
 }
