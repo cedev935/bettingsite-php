@@ -48,14 +48,15 @@
             var Cells = Row.getElementsByTagName("td");
             var player2 = (Cells[0].innerText);
             var betAmount = (Cells[1].innerText);
-            var phone_no = (Cells[3].innerText);   
+            var room_id = $('#room_id').val();
+            var phone_no = (Cells[4].innerText);   
             var ludo_id = '';
             var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
             var charactersLength = characters.length;
             for ( var i = 0; i < 6; i++ ) {
                   ludo_id += characters.charAt(Math.floor(Math.random() * charactersLength));
                   }
-            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no, postid:ludo_id, postamount:betAmount},
+            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no, postid:ludo_id, postamount:betAmount,postroomid:room_id},
                 function(data)
                    {
                     
