@@ -1,6 +1,7 @@
+<?php include('../includes/server.php');?>
+<?php include('../includes/login_validation.php');?>
 <?php include('ad_header.php');?>
 <?php include('ad_nav.php');?>
-<?php include('../includes/db_connect.php');?>
 
 <script type="text/javascript">
         function post(phone) {
