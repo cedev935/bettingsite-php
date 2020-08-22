@@ -2,20 +2,53 @@
 <?php
 $radioVal = $_POST["match_status"];
 $ludo_id = $_POST['ludo_id'];
+$ph=$_SESSION['phone_no'];
+$user=$_SESSION['user_name'];
 
 if($radioVal == "won")
 {
     echo("You won");
-    
+    $sql="UPDATE history set winner='$ph' where ludo_id='$ludo_id'";
+    mysqli_query($db,$sql);
+    $sql="SELECT * from history where ludo_id='$ludo_id'";
+    $res=mysqli_query($db,$sql);
+    if(mysqli_num_rows($res)==1){
+      while($row=mysqli_fetch_assoc($res)){
+          $winner=$row['winner'];
+          $looser=$row['looser'];
+          if($winner!='NULL' and $looser!='NULL'){
+              $query2="DELETE from running where player1='$user' or player2='$user'";
+              mysqli_query($db,$query2); 
+          }
+      }
+   }
     $target_dir = "won/";
 }
 else if ($radioVal == "loose")
 {
     echo("You lost");
+    $sql="UPDATE history set looser='$ph' where ludo_id='$ludo_id'";
+    mysqli_query($db,$sql);
+    $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
+    $res=mysqli_query($db,$sql);
+    if(mysqli_num_rows($res)==1){
+      while($row=mysqli_fetch_assoc($res)){
+          $winner=$row['winner'];
+          $looser=$row['looser'];
+          if($winner!='NULL' and $looser!='NULL'){
+              $query2="DELETE from running where player1='$user' or player2='$user'";
+              mysqli_query($db,$query2); 
+          }
+      }
+   }
     $target_dir = "loose/";
 }
 else{
     echo("cancel");
+    $query2="DELETE from running where player1='$user' or player2='$user'";
+    mysqli_query($db,$query2);
+    $query1="DELETE from history where ludo_id='$ludo_id' or winner='$ph' or looser='$ph'";
+    mysqli_query($db,$query1);
     $target_dir = "cancel/";
 }
 
@@ -62,6 +95,7 @@ if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } 
+
 else {
      $ph=$_SESSION['phone_no'];
     $user=$_SESSION['user_name'];
@@ -81,7 +115,6 @@ else {
         mysqli_query($db,$query1); 
       }
 
-
    
   
    
@@ -98,6 +131,7 @@ else {
           if($winner!='NULL' and $looser!='NULL'){
               $query2="DELETE from running where player1='$user' or player2='$user'";
               mysqli_query($db,$query2); 
+              header('location:home.php');
           }
       }
    }

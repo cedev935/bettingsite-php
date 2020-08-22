@@ -6,10 +6,11 @@ $phone_no    = "";
 $errors = array(); 
 
 // connect to the database and include functions
-include('includes\db_connccect.php');
-include('includes\header.php');
 
-
+ $db = mysqli_connect('localhost', 'root', '', 'ludo_legion');  
+    if(!$db) {
+        die("Database connection failed") . mysqli_error($db);
+    }
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
