@@ -5,7 +5,7 @@ include('includes/server.php');
     $reject = "DELETE FROM open WHERE phone_no='$phone_no'";
     mysqli_query($db, $reject);
     
-    
+    $room_id=$_POST['postroomid'];
     $player1=$_SESSION['user_name'];
     $amount=$_POST['postamount'];
     $player2=$_POST['postplayer'];
@@ -17,8 +17,7 @@ include('includes/server.php');
     if(mysqli_num_rows($res)==1){
         header('location:room.php');
     }
-    else{
-    $room_id = mt_rand(100000,999999);  
+    else{  
     $query1 = "INSERT INTO running (ludo_id , room_id, player1, player2, amount) 
   			  VALUES('$ludo_id', '$room_id', '$player1', '$player2', '$amount')";
   	$GameQuery=mysqli_query($db, $query1);
