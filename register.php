@@ -83,6 +83,7 @@
         <h1 class="h3 mb-3 font-weight-normal">Register here!</h1>
 
         <input type="text" name="user_name" class="form-control" placeholder="User name" required="" autofocus="">
+        <input type="email" name="email" class="form-control" placeholder="Email" required="" autofocus="">
         <input type="number" name="phone_no" class="form-control" placeholder="Phone Number" required="">
         <input type="password" name="password" class="form-control" placeholder="Password" required="">
 
