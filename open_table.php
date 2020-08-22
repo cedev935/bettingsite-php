@@ -29,6 +29,7 @@
                 <!--                      If user wants to accept a game set by others-->
 
                 <td><button type="button" onclick="post(<?php  echo $r['phone_no']; ?>);" class="btn btn-sm btn-success">Play</button></td>
+                <td><input type="text" id="room_id" placeholder="Enter room id "></td>
                 <?php } ?>
 
 
