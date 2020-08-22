@@ -19,7 +19,7 @@
 
 <body class="text-center">
     <form class="form-signin" method="post" action="login.php">
-        <img src="resources/lb.png" alt="" width="100" height="100">
+        <img src="resources/1b.png" alt="" width="100" height="100">
         <h1 class="h3 font-weight-normal">Login here!</h1>
 
         <input type="number" name="phone_no" class="form-control" placeholder="Mobile Number" required="">
