@@ -6,8 +6,8 @@ $phone_no    = "";
 $errors = array(); 
 
 // connect to the database and include functions
-include('includes/db_connect.php');
-
+include('C:\xampp\htdocs\ludo9\includes\db_connect.php');
+include('C:\xampp\htdocs\ludo9\includes\header.php');
 
 
 // REGISTER USER
@@ -16,13 +16,14 @@ if (isset($_POST['reg_user'])) {
   $user_name = mysqli_real_escape_string($db, $_POST['user_name']);
   $phone_no = mysqli_real_escape_string($db, $_POST['phone_no']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
+  $email= mysqli_real_escape_string($db, $_POST['email']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $includes/errors array
   if (empty($user_name)) { array_push($errors, "Username is required"); }
   if (empty($phone_no)) { array_push($errors, "Role must be checked"); }
   if (empty($password)) { array_push($errors, "Password is required"); }
-
+  if (empty($password)) { array_push($errors, "email is required"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -34,18 +35,23 @@ if (isset($_POST['reg_user'])) {
     if ($user['user_name'] === $username) {
       array_push($errors, "Username already exists");
     }
+    if($user['email']===$email){
+      array_push($errors, "email already exists"); 
+    }
+    if($user['phone_no']===$phone_no){
+      array_push($errors, "Number already exists"); 
+    }
 
   }
   // Finally, register user if there are no includes/errors in the form
   if (count($errors) == 0) {
       
-  	$query = "INSERT INTO users (user_name, phone_no, password) 
-  			  VALUES('$user_name', '$phone_no', '$password')";
+  	$query = "INSERT INTO users (user_name, phone_no, password,email) 
+  			  VALUES('$user_name', '$phone_no', '$password','$email')";
   	$registerQuery=mysqli_query($db, $query);
-     $query1 = "INSERT INTO chips (user,chips) 
+    $query1 = "INSERT INTO chips (user,chips) 
           VALUES('$phone_no', 0)";
     $registerQuery1=mysqli_query($db, $query1);
-    
     if(!$registerQuery){
         die('Registration Failed');
     }
@@ -81,6 +87,9 @@ if (isset($_POST['login_user'])) {
         $_SESSION['user_name']=$row['user_name'];
         $_SESSION['phone_no']=$row['phone_no'];
         }
+        echo '<div class="alert alert-success" role="alert">
+  This is a success alert—check it out!
+</div>'; 
         header('location: home.php');
     }
     else{
