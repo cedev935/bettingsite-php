@@ -27,7 +27,7 @@
 
         <button class="btn btn-lg btn-success btn-block" name="login_user" type="submit">Login now</button>
         <br>
-        <a ui-sref="forgetpassword" href="#/forget-password" class="pull-right">Forgot password?</a>
+        <a ui-sref="forgetpassword" href="forget.php" class="pull-right">Forgot password?</a>
         <hr>
         <div class="pull-right">
             Not an user? <a ui-sref="register" href="register.php">Register</a>
