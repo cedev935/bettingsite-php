@@ -28,7 +28,7 @@ if (isset($_POST['reg_user'])) {
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM users WHERE phone_no='$phone_no' LIMIT 1";
+  $user_check_query = "SELECT * FROM users WHERE phone_no='$phone_no' or user_name='$user_name' or email='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
@@ -50,8 +50,8 @@ if (isset($_POST['reg_user'])) {
   	$query = "INSERT INTO users (user_name, phone_no, password,email) 
   			  VALUES('$user_name', '$phone_no', '$password','$email')";
   	$registerQuery=mysqli_query($db, $query);
-    $query1 = "INSERT INTO chips (user,chips) 
-          VALUES('$phone_no', 0)";
+    $query1 = "INSERT INTO chips (user,chips,user_name) 
+          VALUES('$phone_no', 0 ,'$user_name')";
     $registerQuery1=mysqli_query($db, $query1);
     if(!$registerQuery){
         die('Registration Failed');
