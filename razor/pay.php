@@ -44,6 +44,8 @@ $api = new Api($keyId, $keySecret);
 //
 $amount=$_POST['amount'];
 $phone=$_POST['contact'];
+$_SESSION['number']=$phone;
+$_SESSION['amount']=$amount;
 
 $orderData = [
     'receipt'         => 3456,
