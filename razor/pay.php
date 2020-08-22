@@ -78,9 +78,9 @@ if (isset($_GET['checkout']) and in_array($_GET['checkout'], ['automatic', 'manu
 $data = [
     "key"               => $keyId,
     "amount"            => $amount,
-    "name"              => "DJ Tiesto",
-    "description"       => "Tron Legacy",
-    "image"             => "https://s29.postimg.org/r6dj1g85z/daft_punk.jpg",
+    "name"              => "LUDO SOCIETY",
+    "description"       => "Payment for buying chips",
+    "image"             => "http://192.168.225.51:8080/Projects/LudoLegion/resources/lb.png",
     "prefill"           => [
     "name"              => "Daft Punk",
     "email"             => "customer@merchant.com",
