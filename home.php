@@ -31,15 +31,15 @@
     });
 </script>
 
-<script>
-    $(document).ready(function() {
-        setInterval(function() {
-            $("#room").load("room_auto.php");
-            refresh();
-        }, 30000);
-    });
-</script>
+<?php
+$user=$_SESSION['user_name'];
+$running="SELECT * from running WHERE player1='$user' or player2='$user'";
+$res=mysqli_query($db,$running);
+if(mysqli_num_rows($res)==1){
+  header('location:room.php');
+}
 
+?>
 
 
 <script type="text/javascript">
@@ -48,7 +48,7 @@
             var Cells = Row.getElementsByTagName("td");
             var player2 = (Cells[0].innerText);
             var betAmount = (Cells[1].innerText);
-            var room_id = $('#room_id').val();
+            var room_id = prompt("Please create a ludoking room id and enter here", "ludoking room code");
             var phone_no = (Cells[4].innerText);   
             var ludo_id = '';
             var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -104,10 +104,7 @@
         </div>
     <?php } ?>
     
-    <div id="room">
-<!--        Room Code Here-->
-    </div>
-    
+ 
 
     <div>
         <form method="post" action="home.php">

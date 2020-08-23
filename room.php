@@ -32,7 +32,8 @@
 ?>
 <?php include('includes/header.php');?>
 <?php include('includes/nav.php');?>
-
+<br>
+<br>
 <div class="container">
     <h4>Ludo Match ID:
         <?php 
