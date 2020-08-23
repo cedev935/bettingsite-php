@@ -1,7 +1,7 @@
 
     <?php include('server.php'); ?>
 
-    <?php include('includes/login_validation.php'); ?>
+    <?php include('login_validation.php'); ?>
 
     <nav class="navbar navbar-expand-md navbar-dark  bg-dark fixed-top">
 

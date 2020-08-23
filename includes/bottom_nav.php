@@ -1,15 +1,26 @@
-<footer class="my-footer bg-light" >
+<?php 
+    $phone_no=$_SESSION['phone_no'];
+    $noofchips="SELECT chips from chips where user='$phone_no'";
+    $res=mysqli_query($db,$noofchips);
+ ?>
+    <footer class="my-footer bg-light" >
 
 	<div class="row" style="background:#bdbaba; padding:5px;">
-		<div class="col-4 text-center" href="#/app/buy-chips">
+		<div class="col-4 text-center" onclick="location.href='razor/';">
 			<img class="spinImg" src="resources/chip2.png" alt="" height="25px" width="25px">
-			<br> 0 <small>Chips</small>
+			<br><?php 
+                                if(mysqli_num_rows($res)==1){
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        echo $row['chips'];
+                                    }
+                                }
+                                ?><small>Chips</small>
 		</div>
-		<div class="col-4 text-center" href="../home.php">
+		<div class="col-4 text-center" onclick="location.href='home.php';">
 			<span class="spinImg" style="font-size: 21px;">🎲</span>
 			<br> <small><?php echo $_SESSION['user_name'];?></small>
 		</div>
-		<div class="col-4 text-center" href="#/app/matches">
+		<div class="col-4 text-center" onclick="location.href='transaction.php';">
 			<p>
 				<img src="resources/history.png" alt="" height="25px" width="25px">
 				<!-- <i style="font-size:21px;" class="glyphicon glyphicon-list"></i> -->
