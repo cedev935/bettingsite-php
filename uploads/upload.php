@@ -10,6 +10,26 @@ if($radioVal == "won")
     echo("You won");
     $sql="UPDATE history set winner='$ph' where ludo_id='$ludo_id'";
     mysqli_query($db,$sql);
+
+    //update running table 
+    $sql1="SELECT * from running  where player1='$user' or player2='$user'";
+    $res=mysqli_query($db,$sql1);
+    if(mysqli_num_rows($res)==1){
+        while($row=mysqli_fetch_assoc($res)){
+            $p1=$row['player1'];
+            $p2=$row['player2'];
+            if($user==$p1){
+              $up="UPDATE running set player1='player1' where player1='$user'";
+              mysqli_query($db,$up);
+            }
+            else if($user==$p2){
+              $up="UPDATE running set player2='player2' where player2='$user'";
+              mysqli_query($db,$up);
+            }
+        }
+    }
+
+
     $sql="SELECT * from history where ludo_id='$ludo_id'";
     $res=mysqli_query($db,$sql);
     if(mysqli_num_rows($res)==1){
@@ -18,6 +38,8 @@ if($radioVal == "won")
           $looser=$row['looser'];
           if($winner!='NULL' and $looser!='NULL'){
               $query2="DELETE from running where player1='$user' or player2='$user'";
+              mysqli_query($db,$query2);
+              $query2="DELETE from running where player1='player1' or player2='player2'";
               mysqli_query($db,$query2); 
           }
       }
@@ -29,6 +51,27 @@ else if ($radioVal == "loose")
     echo("You lost");
     $sql="UPDATE history set looser='$ph' where ludo_id='$ludo_id'";
     mysqli_query($db,$sql);
+
+
+    //update running table 
+    $sql1="SELECT * from running  where player1='$user' or player2='$user'";
+    $res=mysqli_query($db,$sql1);
+    if(mysqli_num_rows($res)==1){
+        while($row=mysqli_fetch_assoc($res)){
+            $p1=$row['player1'];
+            $p2=$row['player2'];
+            if($user==$p1){
+              $up="UPDATE running set player1='player1' where player1='$user'";
+              mysqli_query($db,$up);
+            }
+            else if($user==$p2){
+              $up="UPDATE running set player2='player2' where player2='$user'";
+              mysqli_query($db,$up);
+            }
+        }
+    }
+
+
     $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
     $res=mysqli_query($db,$sql);
     if(mysqli_num_rows($res)==1){
@@ -38,6 +81,8 @@ else if ($radioVal == "loose")
           if($winner!='NULL' and $looser!='NULL'){
               $query2="DELETE from running where player1='$user' or player2='$user'";
               mysqli_query($db,$query2); 
+              $query2="DELETE from running where player1='player1' or player2='player2'";
+              mysqli_query($db,$query2);
           }
       }
    }
@@ -97,25 +142,7 @@ if ($uploadOk == 0) {
 } 
 
 else {
-     $ph=$_SESSION['phone_no'];
-    $user=$_SESSION['user_name'];
     
-     if ($radioVal =='won'){
-        $sql="UPDATE history set winner='$ph' where ludo_id='$ludo_id'";
-        mysqli_query($db,$sql);      
-      }
-  if ($radioVal =='loose'){
-        $sql="UPDATE history set looser='$ph' where ludo_id='$ludo_id'";
-        mysqli_query($db,$sql);      
-      }
-    if ($radioVal =='cancel'){
-        $query2="DELETE from running where player1='$user' or player2='$user'";
-        mysqli_query($db,$query2);
-        $query1="DELETE from history where ludo_id='$ludo_id' or winner='$ph' or looser='$ph'";
-        mysqli_query($db,$query1); 
-      }
-
-   
   
    
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -130,6 +157,8 @@ else {
           $looser=$row['looser'];
           if($winner!='NULL' and $looser!='NULL'){
               $query2="DELETE from running where player1='$user' or player2='$user'";
+              mysqli_query($db,$query2);
+              $query2="DELETE from running where player1='player1' or player2='player2'";
               mysqli_query($db,$query2); 
               header('location:home.php');
           }
