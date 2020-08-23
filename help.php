@@ -15,8 +15,13 @@
     <br>
     <span class="help-block">Chat us with facebook messenger.</span>
     <br>
+    <a href="https://t.me/joinchat/M-_gmhxvPyCIaW-O5XF5zQ" target="_blank" class="btn btn-lg btn-success">Chat via Telegram</a>
+    <br>
+    <br>
+    <span class="help-block">Chat us with Telegram.</span>
+    <br>
 </div>
-<hr style="margin:5% 10%">
+<hr style="margin:5% 5%">
 <div class="container">
    <h2>FAQ</h2>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
