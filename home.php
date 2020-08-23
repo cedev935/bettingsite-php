@@ -49,7 +49,7 @@ if(mysqli_num_rows($res)==1){
             var player2 = (Cells[0].innerText);
             var betAmount = (Cells[1].innerText);
             var room_id = prompt("Please create a ludoking room id and enter here", "ludoking room code");
-            var phone_no = (Cells[2].innerText);   
+            var phone_no = (Cells[3].innerText);   
             var ludo_id = '';
             var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
             var charactersLength = characters.length;
