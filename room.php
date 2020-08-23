@@ -34,6 +34,7 @@
 <?php include('includes/nav.php');?>
 <br>
 <br>
+<br>
 <div class="container">
     <h4>Ludo Match ID:
         <?php 
@@ -88,7 +89,7 @@
     <form action="uploads/upload.php" method="post" enctype="multipart/form-data">
 
         <h5 class="ml-3">Match Status:</h5>
-        <p class='ml-3'>LUDO ID:<input class='ml-1' type="text" name="ludo_id"></p>
+        <p class='ml-3'>LUDO Match ID:<input class='ml-1' type="text" name="ludo_id"></p>
         <input class="ml-3 " type="radio" name="match_status" value="won"> I won<br>
         <input class="ml-3" type="radio" name="match_status" value="loose"> I loss<br>
         <input class="ml-3" type="radio" name="match_status" value="cancel"> Cancel<br>
