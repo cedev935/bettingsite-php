@@ -1,6 +1,8 @@
 
     <?php include('server.php'); ?>
 
+    <?php include('includes/login_validation.php'); ?>
+
     <nav class="navbar navbar-expand-md navbar-dark  bg-dark fixed-top">
 
     <a class="navbar-brand">Ludo Society</a>
@@ -13,6 +15,7 @@
                     <li class="nav-item"><a  class="nav-link" href="home.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="razor/">Buy Tokens</a></li>
                     <li class="nav-item"><a class="nav-link" href="sell.php">Sell Tokens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="instructions.php">Instructions</a></li>
                     <li class="nav-item"><a class="nav-link" href="transaction.php">Transaction</a></li>
                     <li class="nav-item"><a class="nav-link" href="settin.php">Settings</a></li>
                     <li class="nav-item"><a class="nav-link"href="help.php">Help</a></li>
