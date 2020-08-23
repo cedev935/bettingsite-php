@@ -7,7 +7,7 @@
 <br>
 
 <div class="container">
-    <h4>Instructions</h4>
+    <h3>Instructions</h3>
     <hr>
     <p>
     1.You can set a game for yourself or you can chooose to play a game set by others<br><br>
@@ -17,6 +17,10 @@
     4.Your opponent will join the game using room code set by you or vice versa if he clicks play button<br><br>
     5.Finally play the game and upload your winning or loosing screenshot in room page<br><br>
     6.After that admin will approve winners and tokens will be added to winners after deducting platform charges, which you can withdraw by placing  withdrawal requests<br><br>
+    <hr>
+    Note:<br>
+    <br>
+    <strong class="text-danger"> Dont forget to rename your screenshot with the registered number on this website</strong>
     </p>
     
 </div>
