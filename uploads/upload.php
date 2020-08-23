@@ -143,12 +143,6 @@ if ($uploadOk == 0) {
 
 else {
     
-  
-   
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    echo "<script>alert('Uploaded')</script>";
-      
       $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
    $res=mysqli_query($db,$sql);
    if(mysqli_num_rows($res)==1){
@@ -160,11 +154,18 @@ else {
               mysqli_query($db,$query2);
               $query2="DELETE from running where player1='player1' or player2='player2'";
               mysqli_query($db,$query2); 
-              header('location:home.php');
+              
           }
       }
-   }
+     }
 
+  
+   
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    echo "<script>alert('Uploaded')</script>";
+      //header('location:home.php');
+      
     
   } 
   else {
