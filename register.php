@@ -86,7 +86,7 @@
         </div>
     <?php } ?>
     
-        <img class="mb-4" src="resources/lb.png" alt="" width="100" height="100">
+       
         <h1 class="h3 mb-3 font-weight-normal">Register here!</h1>
 
         <input type="text" name="user_name" class="form-control" placeholder="User name" required="" autofocus="">

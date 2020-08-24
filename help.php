@@ -10,7 +10,7 @@
     <h2>Support Channels</h2>
     <hr>
 
-    <a href="https://m.me/veerapalli.naveenkumar" target="_blank" class="btn btn-lg btn-success">Chat via FB Messenger</a>
+    <a href="https://m.me/saichandu.chintu" target="_blank" class="btn btn-lg btn-success">Chat via FB Messenger</a>
     <br>
     <br>
     <span class="help-block">Chat us with facebook messenger.</span>

@@ -8,9 +8,9 @@
         function post(phone) {
             var Row = document.getElementById(phone);
             var Cells = Row.getElementsByTagName("td");
-            var betAmount = (Cells[4].innerText);
-            var wphone_no = (Cells[1].innerText);
-            var lphone_no = (Cells[3].innerText);   
+            var betAmount = (Cells[5].innerText);
+            var wphone_no = (Cells[2].innerText);
+            var lphone_no = (Cells[4].innerText);   
             $.post('admin_server1.php',{postphone: wphone_no, postamount:betAmount,postphone1:lphone_no},
                 function(data)
                    {

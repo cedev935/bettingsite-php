@@ -4,8 +4,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=320, initial-scale=1">
-    
-    <meta http-equiv="refresh" content="10"/>
+
     <title>Ludo Society</title>
     <!--BootStrap assets hosted from CDN(Content Delivery Network for faster loading of pages) -->
     <!-- Latest compiled and minified CSS -->
@@ -33,6 +32,17 @@
 
 </script>
 
+//If game is running
+<?php
+include ('includes/server.php');
+$user=$_SESSION['user_name'];
+$running="SELECT * from running WHERE player1='$user' or player2='$user'";
+$res=mysqli_query($db,$running);
+if(mysqli_num_rows($res)==1){
+  header('location:room.php');
+}
+?>
+
 
 <!--for auto refresh tables without reload page-->
 
@@ -56,16 +66,6 @@
     });
 </script>
 
-<?php
-$user=$_SESSION['user_name'];
-$running="SELECT * from running WHERE player1='$user' or player2='$user'";
-$res=mysqli_query($db,$running);
-if(mysqli_num_rows($res)==1){
-  header('location:room.php');
-}
-
-?>
-
 
 <script type="text/javascript">
         function post(phone) {
@@ -73,15 +73,15 @@ if(mysqli_num_rows($res)==1){
             var Cells = Row.getElementsByTagName("td");
             var player2 = (Cells[0].innerText);
             var betAmount = (Cells[1].innerText);
-            var room_id = prompt("Please create a ludoking room id and enter here", "ludoking room code");
-            var phone_no = (Cells[3].innerText);   
+            var phone_no = (Cells[3].innerText);
+            var room_id = (Cells[4].innerText);
             var ludo_id = '';
             var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
             var charactersLength = characters.length;
             for ( var i = 0; i < 6; i++ ) {
                   ludo_id += characters.charAt(Math.floor(Math.random() * charactersLength));
                   }
-            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no, postid:ludo_id, postamount:betAmount,postroomid:room_id},
+            $.post('home_ajax.php',{postplayer: player2, postphone: phone_no, postid:ludo_id, postamount:betAmount, postroomid:room_id},
                 function(data)
                    {
                     
@@ -115,8 +115,7 @@ if(mysqli_num_rows($res)==1){
             <h2>Play Ludo</h2>
         </div>
         <div class="col-6 text-right">
-            <button class="pull-right btn btn-danger btn-sm" href="#/app/howtoplay"><i class="glyphicon glyphicon-expand"></i>
-                How to play?</button>
+            <a href="https://youtu.be/hoNb6HuNmU0" target="_blank" class="btn btn-sm btn-danger">How to play</a>
         </div>
     </div>
 
@@ -133,7 +132,8 @@ if(mysqli_num_rows($res)==1){
 
     <div>
         <form method="post" action="home.php">
-            <div class="input-group input-group-sm">
+            <div >
+                <input type="text" placeholder="Enter Ludoking room id" name="room_code" class="form-control"><br>
                 <input type="number" placeholder="Enter Match Amount Here" name="amount" class="form-control">
                 <span class="input-group-btn">
                     <button name="set" type="submit" class="btn btn-success btn-sm">Set
@@ -151,7 +151,7 @@ if(mysqli_num_rows($res)==1){
         <div class="col-6">
             <h5>Open Matches</h5>
         </div>
-        <div class="col-6 text-right"><button class="btn btn-sm btn-primary"><small>Chat with us</small></button></div>
+        <div class="col-6 text-right"><a href="https://m.me/veerapalli.naveenkumar" target="_blank" class="btn btn-sm btn-primary">Chat us</a></div>
 
     </div>
     <br>
@@ -172,15 +172,22 @@ if(mysqli_num_rows($res)==1){
     </div>
     <br>
 
+<?php
+    
+$count="SELECT COUNT(*) FROM running";
+$r=mysqli_query($db,$count);
+    
+?>
+
 
 
     <div class="row" style="background: #f5f5f5">
         <div class="col-8 text-justify">
-            <h5>Running Matches <span class="badge badge-success ng-binding">34</span></h5>
+            <h5>Running Matches <span class="badge badge-success ng-binding"><?php while ($c=mysqli_fetch_assoc($r)) {
+    echo $c['COUNT(*)'];
+}?></span></h5>
         </div>
-        <div class="col-4 text-right">
-            <small>Users Online:18</small>
-        </div>
+        
     </div>
     <hr>
 

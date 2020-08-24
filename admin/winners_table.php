@@ -9,6 +9,7 @@ $runQuery=mysqli_query($db, $running);
     <table class="table table-hover">
         <thead>
             <th>LUDO ID</th>
+            <th>ROOM ID</th>
             <th>WINNER PHONE NO:</th>
             <th>STATUS</th>
             <th>LOOSER PHONE NO:</th>
@@ -19,6 +20,8 @@ $runQuery=mysqli_query($db, $running);
           ?>
             <tr id="<?php echo $r['winner']; ?>">
                 <td><span class="badge badge-primary"><?php  echo $r['ludo_id']; ?></span></td>
+                
+                <td><span class="badge badge-primary"><?php  echo $r['room_id']; ?></span></td>
 
                 <td><span class="badge badge-danger"><?php echo $r['winner']; ?></span></td>
 

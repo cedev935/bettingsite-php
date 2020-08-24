@@ -35,13 +35,29 @@
 <br>
 <br>
 <br>
+
+<script>
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        alert("Copied the text");
+    }
+</script>
+
+
 <div class="container">
-    <h4>Ludo Match ID:
-        <?php 
+    <span><h5>Ludo Match ID:</h5></span>
+    
+    <span id="lid"><?php 
         
        if (mysqli_num_rows($res) == 1){
         while ($row=mysqli_fetch_assoc($res)) {
-            echo $row['ludo_id'];}}?></h4>
+            echo $row['ludo_id'];}}?></span>
+    <span><button class="btn btn-primary" onclick="copyToClipboard('#lid')">Copy</button>
+    </span>
 </div>
 <br>
 <div class="container border border-dark ">
@@ -70,17 +86,19 @@
             <p class="text-center"></p>
         </small>
     </form>
-    <div class="container border border-dark m-1 p-2">
+    <div class="container border border-dark m-1 p-2 text-center">
         <h3 class="text-center">Room Code:
-            <?php 
+           <p id="rid"><?php 
                
               if (mysqli_num_rows($res3) == 1){
                 while ($row=mysqli_fetch_assoc($res3)) {
-                  echo $row['room_id'];}}?>
+                  echo $row['room_id'];}}?></p>
+            
         </h3>
-        <h3 class="text-center">Copy Code</h3>
+        
+        <button class="btn btn-primary" onclick="copyToClipboard('#rid')">Copy</button>
     </div>
-    <p class="text-center font-weight-bold">Room created by Ludo Buddy.Join now and start the game when oppnent Joins!</p>
+    <p class="text-center font-weight-bold">COPY THE ROOM CODE AND PLAY IN LUDOKING!</p>
     <p class="text-center text-danger  font-weight-bold">For cancelling the game VIDEO PROOF is necessary otherwise game will not be cancelled..</p>
 </div>
 <hr>
@@ -111,6 +129,14 @@
     </form>
 
 </div>
+<div class="container text-danger">
+                <p>Note:</p><hr>
+                <p>1.UPLOAD THE CORRECT WINNING OR LOSSING OTHERWISE YOUR AMOUNT WILL BE LOST<br>
+               <br> 2.AFTER UPLOADING WAIT FOR 5 MINS YOUR RESULT WILL BE POSTED</p><br>
+                
+                
+                
+            </div>
 
 <br>
 <br>

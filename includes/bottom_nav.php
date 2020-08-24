@@ -5,16 +5,16 @@
  ?>
     <footer class="my-footer bg-light" >
 
-	<div class="row" style="background:#bdbaba; padding:5px;">
+	<div class="row" style="background:#82f5f5; padding:5px;">
 		<div class="col-4 text-center" onclick="location.href='razor/';">
-			<img class="spinImg" src="resources/chip2.png" alt="" height="25px" width="25px">
+			
 			<br><?php 
                                 if(mysqli_num_rows($res)==1){
                                     while($row=mysqli_fetch_assoc($res)){
                                         echo $row['chips'];
                                     }
                                 }
-                                ?><small>Chips</small>
+                                ?><small> Tokens</small>
 		</div>
 		<div class="col-4 text-center" onclick="location.href='home.php';">
 			<span class="spinImg" style="font-size: 21px;">🎲</span>

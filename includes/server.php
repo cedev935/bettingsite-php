@@ -7,7 +7,7 @@ $errors = array();
 
 // connect to the database and include functions
 
- $db = mysqli_connect('localhost', 'root', '', 'ludo_legion');  
+ $db = mysqli_connect('localhost', 'ludosociety', 'Team@321', 'ludo_legion');  
     if(!$db) {
         die("Database connection failed") . mysqli_error($db);
     }
@@ -106,6 +106,7 @@ if (isset($_POST['set'])) {
 //    function to check if user have enough chips to play
     $user_name=$_SESSION['user_name'];
     $amount= mysqli_real_escape_string($db, $_POST['amount']);
+    $room_code= mysqli_real_escape_string($db, $_POST['room_code']);
     $status="Play";
     $phone_no=$_SESSION['phone_no'];
 
@@ -115,7 +116,7 @@ if (isset($_POST['set'])) {
     if(mysqli_num_rows($res)==1){
         while($row=mysqli_fetch_assoc($res)){
             $chip=$row['chips'];
-            if($chip<=$amount){
+            if($chip<$amount){
                  array_push($errors, "Not Enough Chips");
                  //header('location:buy.php');
             }
@@ -134,8 +135,8 @@ if (isset($_POST['set'])) {
                   //insert the values to open matches
                 
                   if(mysqli_num_rows($resu)!=1 and mysqli_num_rows($res)!=1 ){
-                       $query = "INSERT INTO open (user_name, amount, status, phone_no) 
-                          VALUES('$user_name', '$amount', '$status', '$phone_no')";
+                       $query = "INSERT INTO open (user_name, amount, status, phone_no, roomcode) 
+                          VALUES('$user_name', '$amount', '$status', '$phone_no', '$room_code')";
                     $setGameQuery=mysqli_query($db, $query);
                     
                     if(!$setGameQuery){
@@ -143,6 +144,7 @@ if (isset($_POST['set'])) {
                     }
                       else{
                         echo "Game set successfully";
+                        header('location: waiting.php');
                       }   
                   }
 

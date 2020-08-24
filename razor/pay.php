@@ -108,5 +108,5 @@ $json = json_encode($data);
 
 require("checkout/{$checkout}.php");
     
-include('../includes/bottom_nav.php');   
+ 
     

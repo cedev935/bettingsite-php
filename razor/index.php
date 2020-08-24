@@ -63,24 +63,24 @@
 <br>
 <br>
 <div class="container">
-    <h2>Buy chips here</h2>
+    <h2>Buy TOKENS here</h2>
     <form method="post" action="pay.php" id="checkout-selection">
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">No of Chips</label>
+            <label class="col-sm-2 control-label">No of TOKENS</label>
 
             <div class="col-sm-10">
-                <input type="number" class="form-control" name="amount" placeholder="Chips">
-                <span class="text-primary">Minimum Buy: 10 Chips </span>
+                <input type="number" class="form-control" name="amount" placeholder="TOKENS">
+                <span class="text-primary">Minimum Buy: 10 TOKENS </span>
             </div>
         </div>
 
 
         <div class="form-group">
-            <label class="col-sm-2">Mobile No.</label>
+            <label class="col-sm-2"> Enter Registered Mobile No.(or else tokens will not be added)</label>
             <div class="col-sm-10">
                 <input type="number" name="contact" class="form-control" placeholder="For Payment">
-                <span class="text-default">Instant Chips into account after successful payment</span>
+                <span class="text-default">Instant TOKENS into account after successful payment</span>
             </div>
         </div>
 
@@ -94,16 +94,23 @@
         <input type="hidden" name="email" value="test@phpzag.com">
 <!--        <input name="contact" value="9999999999">-->
         <input type="submit" class="btn btn-primary" value="Buy Now">
-
+<p>PAYTM WALLET ONLY: <b>7075067963</b></p>
         <hr>
         <div class="row">
             <div class="col-6">
-                <a target="_blank" href="https://t.me/ludobuddy"><i class="fa fa-question-circle"></i> <u>Contact Support</u></a>
+                
+                <a target="_blank" href=""><i class="fa fa-question-circle"></i> <u>Contact Support</u></a>
             </div>
             
         </div>
     </form>
 </div>
+<div class="container text-danger">
+                <p>Note:</p><hr>
+                <p>1.Use website registered number only for transactions else TOKENS wont be properly added</p><br>
+                2.If u have amount in your paytm wallet so kindly copy the above  PAYTM WALLET number and send the money and kindly wait for 10mins and if you have and query kindly contact us we will solve the problem as soon as possible
+                
+            </div>
 
 
 

@@ -1,4 +1,10 @@
 <?php include('includes/server.php');?>
+
+<?php
+$query2="DELETE from running where player1='player1' and player2='player2'";
+mysqli_query($db,$query2);
+?>
+              
 <form method="post" action="home.php">
     <table class="table table-hover">
         <thead>

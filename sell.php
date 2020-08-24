@@ -52,7 +52,7 @@ $withDraw=mysqli_query($db, $with);
 
 <div class="container">
     <h4>
-        Sell Chips
+        Sell Tokens
     </h4>
 </div>
 <hr style="margin:0px 20px;">
@@ -73,8 +73,8 @@ $withDraw=mysqli_query($db, $with);
                             <label class="col-sm-2 control-label">Amount</label>
 
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" name="amount" placeholder="Withdraw Chips">
-                                <span class="text-primary">Minimum Withdraw: 50Chips </span>
+                                <input type="number" class="form-control" name="amount" placeholder="Withdraw TOKENS">
+                                <span class="text-primary">Minimum Withdraw: 50Tokens </span>
                             </div>
                         </div>
 
@@ -128,6 +128,14 @@ $withDraw=mysqli_query($db, $with);
 
                     </table>
                 </form>
+            </div>
+            
+            <div class="container text-danger">
+                <p>Note:</p><hr>
+                <p>1.At a time only one withdrawal request is allowed</p><br>
+                <p>2.Use website registered number only for transactions else chips wont be properly added</p><br><br>
+                
+                
             </div>
 
 

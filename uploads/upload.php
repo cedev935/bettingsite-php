@@ -143,7 +143,8 @@ if ($uploadOk == 0) {
 
 else {
     
-      $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
+    
+    $sql="SELECT winner,looser from history where ludo_id='$ludo_id'";
    $res=mysqli_query($db,$sql);
    if(mysqli_num_rows($res)==1){
       while($row=mysqli_fetch_assoc($res)){
@@ -154,18 +155,21 @@ else {
               mysqli_query($db,$query2);
               $query2="DELETE from running where player1='player1' or player2='player2'";
               mysqli_query($db,$query2); 
-              
+              header('location:../home.php');
           }
       }
-     }
-
+   }
+    
   
    
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     echo "<script>alert('Uploaded')</script>";
-      //header('location:home.php');
+    sleep(2);
+    header('location:../home.php');
       
+      
+
     
   } 
   else {
